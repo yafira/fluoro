@@ -6,8 +6,8 @@ Riso-fy (almost) anything.
 
 <table>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/yafira/fluoro-riso/main/docs/images/original.png" alt="The sample image before processing"><br>Before</td>
-    <td><img src="https://raw.githubusercontent.com/yafira/fluoro-riso/main/docs/images/result.png" alt="The sample image after riso processing with pink and blue halftone layers"><br>After: pink + blue, halftone dots, 2px misregistration</td>
+    <td><img src="https://raw.githubusercontent.com/yafira/fluoro/main/docs/images/original.png" alt="The sample image before processing"><br>Before</td>
+    <td><img src="https://raw.githubusercontent.com/yafira/fluoro/main/docs/images/result.png" alt="The sample image after riso processing with pink and blue halftone layers"><br>After: pink + blue, halftone dots, 2px misregistration</td>
   </tr>
 </table>
 
@@ -143,7 +143,7 @@ The difference comes from how browsers draw fixed elements: Safari and Firefox d
 
 The Fluoro tool is at [fluoro-riso.vercel.app](https://fluoro-riso.vercel.app): load your own image, pick inks and a screen, pull reprints, and see the same print applied to a live page layout. Images are downscaled to 640px on the long side and never leave the browser.
 
-![Demo: loading an image, cycling ink presets, switching screens, and adjusting the print-flaw sliders in Fluoro](https://raw.githubusercontent.com/yafira/fluoro-riso/main/docs/images/demo.gif)
+![Demo: loading an image, cycling ink presets, switching screens, and adjusting the print-flaw sliders in Fluoro](https://raw.githubusercontent.com/yafira/fluoro/main/docs/images/demo.gif)
 
 To run it locally, open `index.html` in a browser; it works from `file://`. To work on the package too, run `npm install` once, then `npm run dev` and open http://127.0.0.1:5173, which serves the site and rebuilds `dist/fluoro.js` on every reload.
 
@@ -151,7 +151,7 @@ To run it locally, open `index.html` in a browser; it works from `file://`. To w
 
 Each ink is matched to the color channel it absorbs, that channel becomes a coverage map, the map is screened to 1-bit with halftone dots, a Bayer dither or grain, and the layers are multiplied onto paper with the second ink slightly offset. Filter mode does the same separation on the page inside an SVG filter, and lite mode, the default, approximates it with blend layers.
 
-The full write-up, with figures for every stage, the decisions behind it, the tool's settings and the project structure, is in [How Fluoro works](https://github.com/yafira/fluoro-riso/blob/main/docs/process.md).
+The full write-up, with figures for every stage, the decisions behind it, the tool's settings and the project structure, is in [How Fluoro works](https://github.com/yafira/fluoro/blob/main/docs/process.md).
 
 ## Limits
 

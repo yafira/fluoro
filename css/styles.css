@@ -203,3 +203,21 @@ button:focus-visible, select:focus-visible, input:focus-visible {
 }
 
 .note { font-size: 14px; opacity: .8; }
+
+/* links to npm and github */
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 clamp(24px, 4vw, 44px); }
+a.btn { text-decoration: none; }
+a.btn:focus-visible { outline: 3px solid var(--ink-b); outline-offset: 3px; }
+
+/* install snippet */
+.install p { max-width: 58ch; }
+.install pre {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border: 2px solid var(--text);
+  background: var(--paper);
+  font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--text);
+}
+.install .links { margin: 20px 0 0; }

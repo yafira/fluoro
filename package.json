@@ -37,7 +37,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yafira/fluoro-riso.git"
+    "url": "git+https://github.com/yafira/fluoro.git"
   },
   "homepage": "https://fluoro-riso.vercel.app",
   "devDependencies": {
