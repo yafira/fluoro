@@ -62,6 +62,91 @@ h1, h2, h3 {
   font-size: clamp(46px, 11.5vw, 132px);
   margin: 0 0 clamp(18px, 3vw, 32px);
 }
+/* the fluoro blossom, a little print taped into the empty corner of the header */
+.sheet {
+  --logo-w: clamp(96px, 24vw, 300px);
+  --logo-right: clamp(20px, 5vw, 72px);
+}
+.hero-logo {
+  position: absolute;
+  top: clamp(20px, 4.5vw, 56px);
+  right: var(--logo-right);
+  width: var(--logo-w);
+  transform: rotate(-6deg);
+  aspect-ratio: 1;
+  background: #f4f1e7;
+  box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 18px rgba(0,0,0,.14);
+}
+/* the flower sits where it is on the original print and spins on its centre.
+   it's two ink layers, so it takes on whatever inks are picked */
+.flower {
+  position: absolute;
+  left: 4.4%;
+  top: 2.6%;
+  width: 82.5%;
+  aspect-ratio: 647 / 720;
+  transform-origin: 56% 51%;
+  animation: flower-spin 14s linear infinite paused;
+}
+.flower span {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+}
+.flower-petals {
+  background: var(--ink-a);
+  -webkit-mask: url("../assets/flower-petals.png") center / contain no-repeat;
+  mask: url("../assets/flower-petals.png") center / contain no-repeat;
+}
+.flower-centre {
+  background: var(--ink-b);
+  -webkit-mask: url("../assets/flower-centre.png") center / contain no-repeat;
+  mask: url("../assets/flower-centre.png") center / contain no-repeat;
+}
+/* hover to spin slowly; it stops wherever it is when you move away */
+.hero-logo:hover .flower { animation-play-state: running; }
+@keyframes flower-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .flower { animation: none; } }
+/* a strip of masking tape across the top, with torn ends */
+.hero-logo::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  top: -6%;
+  left: 50%;
+  width: 42%;
+  height: 13%;
+  transform: translateX(-50%) rotate(4deg);
+  background: rgba(236, 226, 196, .72);
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  clip-path: polygon(0 6%, 4% 0, 9% 10%, 14% 2%, 86% 4%, 92% 0, 96% 9%, 100% 3%,
+    100% 94%, 95% 100%, 90% 90%, 84% 98%, 15% 96%, 9% 100%, 5% 91%, 0 98%);
+}
+
+/* keep the header text clear of the print (plus room for its tilt) */
+.riso-name,
+.riso-sub,
+.sheet > .lede {
+  margin-right: calc(var(--logo-w) + var(--logo-right) - clamp(20px, 4.5vw, 56px) + 36px);
+}
+/* on small screens the print sits beside the title only, the intro gets the full width */
+@media (max-width: 700px) {
+  .sheet > .lede { margin-right: 0; }
+}
+
+/* the name gets both inks; the tagline under it is one ink, half the size */
+.riso-name { margin-bottom: 10px; }
+.riso-sub {
+  font-family: "Bricolage Grotesque", "Arial Black", Impact, sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-size: clamp(18px, 2.4vw, 28px);
+  color: var(--ink-b);
+  max-width: none;
+  margin-top: 0;
+  margin-bottom: clamp(18px, 3vw, 32px);
+}
 .riso-text::after {
   content: attr(data-text);
   position: absolute;
@@ -135,7 +220,7 @@ select {
 .btn.solid {
   background: var(--ink-a);
   border-color: var(--ink-b);
-  color: var(--ink-b);
+  color: var(--text); /* dark on the pink so it stays readable */
   mix-blend-mode: multiply;
 }
 .btn.solid:hover { background: var(--ink-b); color: var(--paper); }
